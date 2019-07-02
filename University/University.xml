@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>University</name>
+    </assembly>
+    <members>
+        <member name="M:University.Controllers.StudentsController.Get(System.Int32,System.Int32)">
+            <summary>
+            List students
+            </summary>
+            <param name="page">Page number</param>
+            <param name="count">Total Item Count</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
