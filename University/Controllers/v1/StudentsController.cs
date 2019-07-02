@@ -48,7 +48,7 @@ namespace University.Controllers
             return returnData;
         }
 
-        // GET api/values/5
+        // GET v1/Students/5
         [HttpGet("{id}")]
         public ActionResult<ApiReturn<StudentModel>> Get(int id)
         {
@@ -79,14 +79,14 @@ namespace University.Controllers
             return returnData;
         }
 
-        // POST api/values
+        // POST v1/Students
         [HttpPost]
         public void Post([FromBody] StudentModel value)
         {
             Students.Add(value);
         }
 
-        // PUT api/values/5
+        // PUT v1/Students/5
         [HttpPut("{id}")]
         public ActionResult<bool> Put(int id, [FromBody] StudentModel value)
         {
@@ -103,7 +103,7 @@ namespace University.Controllers
             return true;
         }
 
-        // DELETE api/values/5
+        // DELETE v1/Students/5
         [HttpDelete("{id}")]
         public ActionResult<bool> Delete(int id)
         {
@@ -117,6 +117,20 @@ namespace University.Controllers
             Students.Remove(student);
 
             return true;
+        }
+		
+		// GET v1/Students/filtered
+		[HttpGet("filtered")]
+        public ActionResult<List<StudentModel>> FilteredStudents()
+        {
+            var students = Students.Where(p => p.Age >= 18 && p.Age <= 40).ToList();
+
+            if (students == null)
+            {
+                return NotFound();
+            }
+
+            return students;
         }
     }
 }
